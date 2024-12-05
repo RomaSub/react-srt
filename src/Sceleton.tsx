@@ -1,6 +1,7 @@
+import { observer } from "mobx-react-lite";
 import { Table } from "react-bootstrap";
 
-export const Sceleton = () => {
+export const Sceleton = observer(() => {
   return (
     <>
       <Table bordered hover>
@@ -27,4 +28,4 @@ export const Sceleton = () => {
       </Table>
     </>
   );
-};
+});

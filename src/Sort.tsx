@@ -1,17 +1,11 @@
+import { observer } from "mobx-react-lite";
 import { Button } from "react-bootstrap";
+import { commentsStore, type Names } from "./stores/comments";
 
-type SortProps = {
-  name: "id" | "name" | "email" | "body";
-  sortBy: (name: "id" | "name" | "email" | "body") => void;
-};
-
-export const Sort = ({ name, sortBy }: SortProps) => {
-  console.log(sortBy)
+export const Sort = observer(({ name }: { name: Names }) => {
   return (
-    <>
-      <Button variant="dark" onClick={() => sortBy(name)}>
-        {name[0].toUpperCase() + name.slice(1)}
-      </Button>
-    </>
+    <Button variant="dark" onClick={() => commentsStore.sortComments(name)}>
+      {name[0].toUpperCase() + name.slice(1)}
+    </Button>
   );
-};
+});
